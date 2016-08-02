@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace PokemonScanner
@@ -23,6 +19,15 @@ namespace PokemonScanner
 
         [JsonProperty(PropertyName = "longitude")]
         public double Longitude { get; set; }
+
+        public long SecondsRemains
+        {
+            get
+            {
+                DateTime time = new DateTime(Expires * 10000000).AddYears(1969).AddDays(-1);
+                return (long)time.Subtract(DateTime.Now.ToUniversalTime()).TotalSeconds;
+            }
+        }
     }
 
     public class PokemonCollection

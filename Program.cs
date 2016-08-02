@@ -50,7 +50,7 @@ namespace PokemonScanner
 "Weezing",
 "Rhydon",
 "Seadra",
-"Starmie",
+//"Starmie",
 "Omastar",
 "Kabutops"};
             
