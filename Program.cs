@@ -21,8 +21,39 @@ namespace PokemonScanner
                 "http://skiplagged.com/api/pokemon.php?bounds=22.261931,114.215444,22.328741,114.268432",
                 "http://skiplagged.com/api/pokemon.php?bounds=22.232476,114.123339,22.294026,114.212946"
             };
-            string[] wanted = { "Chansey", "Snorlax", "Lapras" };
-            //test
+            string[] wanted = { "Chansey", "Snorlax", "Lapras",
+"Charmeleon",
+"Charizard",
+"Blastoise",
+"Nidoking",
+"Wigglytuff",
+"Vileplume",
+"Dugtrio",
+"Primeape",
+"Poliwrath",
+"Kadabra",
+"Alakazam",
+"Machamp",
+"Victreebel",
+"Graveler",
+"Golem",
+"Rapidash",
+"Dodrio",
+"Dewgong",
+"Muk",
+"Cloyster",
+"Haunter",
+"Gengar",
+"Hypno",
+"Exeggutor",
+"Marowak",
+"Weezing",
+"Rhydon",
+"Seadra",
+"Starmie",
+"Omastar",
+"Kabutops"};
+            
             while (true)
             {
                 for(int i = 0; i < urls.Count(); i++)
