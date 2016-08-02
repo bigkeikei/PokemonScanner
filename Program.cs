@@ -21,7 +21,7 @@ namespace PokemonScanner
                 "http://skiplagged.com/api/pokemon.php?bounds=22.261931,114.215444,22.328741,114.268432",
                 "http://skiplagged.com/api/pokemon.php?bounds=22.232476,114.123339,22.294026,114.212946"
             };
-            string[] wanted = { "Chansey", "Snorlax", "Lapras",
+            string[] wanted = { "Snorlax", "Lapras",
                 "Charmeleon",
                 "Charizard",
                 "Blastoise",
@@ -49,6 +49,7 @@ namespace PokemonScanner
                 "Marowak",
                 "Weezing",
                 "Rhydon",
+                //"Chansey",
                 "Seadra",
                 //"Starmie",
                 "Omastar",
