@@ -11,62 +11,22 @@ namespace PokemonScanner
     {
         static void Main(string[] args)
         {
-            string[] urls = {
-                "http://skiplagged.com/api/pokemon.php?bounds=22.371945,113.950123,22.423506,113.998324",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.423156,113.990416,22.474617,114.062785",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.367684,114.161805,22.430902,114.244480",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.327029,114.076295,22.378765,114.148641",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.295827,114.146012,22.327883,114.198095",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.328938,114.144102,22.343714,114.216538",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.261931,114.215444,22.328741,114.268432",
-                "http://skiplagged.com/api/pokemon.php?bounds=22.232476,114.123339,22.294026,114.212946"
-            };
-            string[] wanted = { "Snorlax", "Lapras",
-                "Charmeleon",
-                "Charizard",
-                "Blastoise",
-                "Nidoking",
-                "Wigglytuff",
-                "Vileplume",
-                "Dugtrio",
-                "Primeape",
-                "Poliwrath",
-                "Kadabra",
-                "Alakazam",
-                "Machamp",
-                "Victreebel",
-                "Graveler",
-                "Golem",
-                "Rapidash",
-                "Dodrio",
-                "Dewgong",
-                "Muk",
-                "Cloyster",
-                "Haunter",
-                "Gengar",
-                "Hypno",
-                "Exeggutor",
-                "Marowak",
-                "Weezing",
-                "Rhydon",
-                //"Chansey",
-                "Seadra",
-                //"Starmie",
-                "Omastar",
-                "Kabutops"};
-            
+            string url = "http://skiplagged.com/api/pokemon.php?bounds=";
+            Pokedex pokedex = new Pokedex();
+            ZoneCollection scan = new ZoneCollection();
+
             while (true)
             {
-                for(int i = 0; i < urls.Count(); i++)
+                for(int i = 0; i < scan.Zones.Count(); i++)
                 {
-                    string res = HttpGet(urls[i]);
-                    var result = JsonConvert.DeserializeObject<PokemonCollection>(res);
+                    string res = HttpGet(url + scan.Zones[i]);
+                    var result = JsonConvert.DeserializeObject<WildPokemonCollection>(res);
                     if (result.Pokemons != null)
                     {
                         Console.WriteLine(result.Pokemons.Count() + " pokemon(s) scanned in zone[" + i + "]");
-                        foreach (Pokemon pokemon in result.Pokemons)
+                        foreach (WildPokemon pokemon in result.Pokemons)
                         {
-                            if (wanted.Contains(pokemon.Name))
+                            if (pokedex.IsWanted(pokemon.Id))
                             {
                                 Console.WriteLine(JsonConvert.SerializeObject(pokemon));
                             }
@@ -89,7 +49,7 @@ namespace PokemonScanner
                 reader.Close();
                 res.Close();
             }
-            catch(Exception ex) {};
+            catch(Exception) {};
 
             return response;
         }
