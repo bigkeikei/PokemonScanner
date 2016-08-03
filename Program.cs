@@ -20,8 +20,13 @@ namespace PokemonScanner
                 for(int i = 0; i < scan.Zones.Count(); i++)
                 {
                     string res = HttpGet(url + scan.Zones[i]);
-                    var result = JsonConvert.DeserializeObject<WildPokemonCollection>(res);
-                    if (result.Pokemons != null)
+                    WildPokemonCollection result = null;
+                    try
+                    {
+                        result = JsonConvert.DeserializeObject<WildPokemonCollection>(res);
+                    }
+                    catch (Exception) { };
+                    if (result != null && result.Pokemons != null)
                     {
                         Console.WriteLine(result.Pokemons.Count() + " pokemon(s) scanned in zone[" + i + "]");
                         foreach (WildPokemon pokemon in result.Pokemons)
