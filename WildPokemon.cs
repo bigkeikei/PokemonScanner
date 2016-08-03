@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace PokemonScanner
 {
-    public class Pokemon
+    public class WildPokemon
     {
         [JsonProperty(PropertyName = "pokemon_id")]
         public int Id { get; set; }
@@ -30,9 +30,9 @@ namespace PokemonScanner
         }
     }
 
-    public class PokemonCollection
+    public class WildPokemonCollection
     {
         [JsonProperty(PropertyName = "pokemons")]
-        public Pokemon[] Pokemons { get; set; }
+        public WildPokemon[] Pokemons { get; set; }
     }
 }
